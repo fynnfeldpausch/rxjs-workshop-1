@@ -1,259 +1,155 @@
 <h1>RxJS workshop, Vol. 1</h1>
 
-<h2>Operators</h2>
-<a href="https://rxjs.dev/guide/operators#categories-of-operators">https://rxjs.dev/guide/operators#categories-of-operators</a>
+<h2>Subjects</h2>
+<h2><a href="https://www.learnrxjs.io/learn-rxjs/subjects">Subjects</a></h2>
 
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Creation Operators
-    * **of:** https://rxjs.dev/api/index/function/of
-      - **Usage:** create new observable from plain value
-      - **Notes:** also works with more than one value
-    * **from:** https://rxjs.dev/api/index/function/from
-      - **Usage:** create new observable from promise
-      - **Notes:** also works with arrays, iterables, scheduler, ...
-  </markdown>
-  <div>
-    <markdown ngPreserveWhitespaces (click)="clear(); of()">
-      ```typescript
-      // of
-      of('of')
-        .subscribe(console.log);
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); from()">
-      ```typescript
-      // from
-      const p = new Promise(resolve =>
-        setTimeout(() => resolve('from'), 1000)
-      );
-      from(p)
-        .subscribe(console.log);
-      ```
-    </markdown>
-  </div>
-</section>
+<h3>Subject</h3>
+<app-example fn="exSubject" ngPreserveWhitespaces>
+  A special type of Observable which shares a single execution path among observers.
+</app-example>
 
+<h3>Behavior Subject</h3>
+<app-example fn="exBehavior" ngPreserveWhitespaces>
+  Requires an initial value and emits the current value to new subscribers.
+</app-example>
 
+<h2><a href="https://rxjs.dev/guide/operators#categories-of-operators">Operators</a></h2>
+<a href="https://rxjs.dev/operator-decision-tree">https://rxjs.dev/operator-decision-tree</a>
 
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Join Creation Operators
-    * **combineLatest:** https://rxjs.dev/api/index/function/combineLatest
-      - **Usage:**
-      - **Notes:**
-    * **concat:** https://rxjs.dev/api/index/function/concat
-      - **Usage:**
-      - **Notes:**
-    * **merge:** https://rxjs.dev/api/index/function/merge
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <div>
-    <markdown ngPreserveWhitespaces (click)="clear(); combineLatest()">
-      ```typescript
-      // combineLatest
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); concat()">
-      ```typescript
-      // concat
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); merge()">
-      ```typescript
-      // merge
-      ```
-    </markdown>
-  </div>
-</section>
+<h3>Creation Operators</h3>
+<app-example fn="exOf" ngPreserveWhitespaces>
+  * **of:** https://rxjs.dev/api/index/function/of)
+    - **Usage:** ...
+    - **Notes:** ...
+</app-example>
+<app-example fn="exFrom" ngPreserveWhitespaces>
+  * **from:** https://rxjs.dev/api/index/function/from
+    - **Usage:** ...
+    - **Notes:** ...
+</app-example>
 
+<h3>Join Creation Operators</h3>
+<app-example fn="exCombineLatest" ngPreserveWhitespaces>
+  * **combineLatest:** https://rxjs.dev/api/index/function/combineLatest
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exConcat" ngPreserveWhitespaces>
+  * **concat:** https://rxjs.dev/api/index/function/concat
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exMerge" ngPreserveWhitespaces>
+  * **merge:** https://rxjs.dev/api/index/function/merge
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
+<h3>Transformation Operators</h3>
+<app-example fn="exMap" ngPreserveWhitespaces>
+  * **map:** https://rxjs.dev/api/operators/map
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exSwitchMap" ngPreserveWhitespaces>
+  * **switchMap:** https://rxjs.dev/api/operators/switchMap
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exBufferCount" ngPreserveWhitespaces>
+  * **bufferCount:** https://rxjs.dev/api/operators/bufferCount
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exBufferTime" ngPreserveWhitespaces>
+  * **bufferTime:** https://rxjs.dev/api/operators/bufferTime
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exScan" ngPreserveWhitespaces>
+  * **scan:** https://rxjs.dev/api/operators/scan
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Transformation Operators
-    * **map:** https://rxjs.dev/api/operators/map
-      - **Usage:**
-      - **Notes:**
-    * **switchMap:** https://rxjs.dev/api/operators/switchMap
-      - **Usage:**
-      - **Notes:**
-    * **bufferCount:** https://rxjs.dev/api/operators/bufferCount
-      - **Usage:**
-      - **Notes:**
-    * **bufferTime:** https://rxjs.dev/api/operators/bufferTime
-      - **Usage:**
-      - **Notes:**
-    * **scan:** https://rxjs.dev/api/operators/scan
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <div>
-    <markdown ngPreserveWhitespaces (click)="clear(); map()">
-      ```typescript
-      // map
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); switchMap()">
-      ```typescript
-      // switchMap
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); bufferCount()">
-      ```typescript
-      // bufferCount
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); bufferTime()">
-      ```typescript
-      // bufferTime
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); scan()">
-      ```typescript
-      // scan
-      ```
-    </markdown>
-  </div>
-</section>
+<h3>Filtering Operators</h3>
+<app-example fn="exFilter" ngPreserveWhitespaces>
+  * **filter:** https://rxjs.dev/api/operators/filter
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exDistinctUntilChanged" ngPreserveWhitespaces>
+  * **distinctUntilChanged:** https://rxjs.dev/api/operators/distinctUntilChanged
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exTakeUntil" ngPreserveWhitespaces>
+  * **takeUntil:** https://rxjs.dev/api/operators/takeUntil
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exFirst" ngPreserveWhitespaces>
+  ### Filtering Operators
+  * **first:** https://rxjs.dev/api/operators/first
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exSkip" ngPreserveWhitespaces>
+  * **skip:** https://rxjs.dev/api/operators/skip
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exAuditTime" ngPreserveWhitespaces>
+  * **auditTime:** https://rxjs.dev/api/operators/auditTime
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exDebounceTime" ngPreserveWhitespaces>
+  * **debounceTime:** https://rxjs.dev/api/operators/debounceTime
+    - **Usage:**
+    - **Notes:**
+</app-example>
+<app-example fn="exThrottleTime" ngPreserveWhitespaces>
+  * **throttleTime:** https://rxjs.dev/api/operators/throttleTime
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
+<h3>Join Operators</h3>
+<app-example fn="exStartWith" ngPreserveWhitespaces>
+  * **startWith:** https://rxjs.dev/api/operators/startWith
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
+<h3>Multicasting Operators</h3>
+<app-example fn="exShare" ngPreserveWhitespaces>
+  * **share:** https://rxjs.dev/api/operators/share
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Filtering Operators
-    * **filter:** https://rxjs.dev/api/operators/filter
-      - **Usage:**
-      - **Notes:**
-    * **distinctUntilChanged:** https://rxjs.dev/api/operators/distinctUntilChanged
-      - **Usage:**
-      - **Notes:**
-    * **takeUntil:** https://rxjs.dev/api/operators/takeUntil
-      - **Usage:**
-      - **Notes:**
-    * **first:** https://rxjs.dev/api/operators/first
-      - **Usage:**
-      - **Notes:**
-    * **skip:** https://rxjs.dev/api/operators/skip
-      - **Usage:**
-      - **Notes:**
-    * **auditTime:** https://rxjs.dev/api/operators/auditTime
-      - **Usage:**
-      - **Notes:**
-    * **debounceTime:** https://rxjs.dev/api/operators/debounceTime
-      - **Usage:**
-      - **Notes:**
-    * **throttleTime:** https://rxjs.dev/api/operators/throttleTime
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <div>
-    <markdown ngPreserveWhitespaces (click)="clear(); filter()">
-      ```typescript
-      // filter
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); distinctUntilChanged()">
-      ```typescript
-      // distinctUntilChanged
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); takeUntil()">
-      ```typescript
-      // takeUntil
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); first()">
-      ```typescript
-      // first
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); skip()">
-      ```typescript
-      // skip
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); auditTime()">
-      ```typescript
-      // auditTime
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); debounceTime()">
-      ```typescript
-      // debounceTime
-      ```
-    </markdown>
-    <markdown ngPreserveWhitespaces (click)="clear(); throttleTime()">
-      ```typescript
-      // throttleTime
-      ```
-    </markdown>
-  </div>
-</section>
+<h3>Error Handling Operators</h3>
+<app-example fn="exCatchError" ngPreserveWhitespaces>
+  * **catchError:** https://rxjs.dev/api/operators/catchError
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
-
-
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Join Operators
-    * **startWith:** https://rxjs.dev/api/operators/startWith
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <markdown ngPreserveWhitespaces (click)="clear(); startWith()">
-    ```typescript
-    // startWith
-    ```
-  </markdown>
-</section>
-
-
-
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Multicasting Operators
-    * **share:** https://rxjs.dev/api/operators/share
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <markdown ngPreserveWhitespaces (click)="clear(); share()">
-    ```typescript
-    // share
-    ```
-  </markdown>
-</section>
-
-
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Error Handling Operators
-    * **catchError:** https://rxjs.dev/api/operators/catchError
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <markdown ngPreserveWhitespaces (click)="clear(); catchError()">
-    ```typescript
-    // catchError
-    ```
-  </markdown>
-</section>
-
-
-<section>
-  <markdown ngPreserveWhitespaces>
-    ### Utility Operators
-    * **tap:** https://rxjs.dev/api/operators/tap
-      - **Usage:**
-      - **Notes:**
-  </markdown>
-  <markdown ngPreserveWhitespaces (click)="clear(); tap()">
-    ```typescript
-    // tap
-    ```
-  </markdown>
-</section>
-
+<h3>Utility Operators</h3>
+<app-example fn="exTap" ngPreserveWhitespaces>
+  * **tap:** https://rxjs.dev/api/operators/tap
+    - **Usage:**
+    - **Notes:**
+</app-example>
 
 
 <h2>Examples</h2>
+
+<h3>Example 1</h3>
+
+<label for="search">Search:</label>
+<input id="search" type="text" [formControl]="search">
+<ul>
+  <li *ngFor="let name of results$ | async">{{ name }}</li>
+</ul>

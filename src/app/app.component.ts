@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { from, of, throwError } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { randFullName } from '@ngneat/falso';
+import { debounceTime, delay, Observable, of, skip, switchMap, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,81 +9,25 @@ import { from, of, throwError } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  private readonly names = new Array(100).fill(0).map(() => randFullName({ withAccents: false }));
 
-  of(): void {
-    of('of')
-      .subscribe(console.log);
-  }
+  readonly search = new FormControl('');
+  readonly search$ = this.search.valueChanges;
+  readonly results$: Observable<string[]>;
 
-  from(): void {
-    const p = new Promise(resolve =>
-      setTimeout(() => resolve('from'), 500)
+  constructor() {
+    this.results$ = this.search$.pipe(
+      debounceTime(1000),
+      switchMap(term => this.getNames(term).pipe(
+        takeUntil(this.search$.pipe(skip(1)))
+      ))
     );
-    from(p)
-      .subscribe(console.log);
   }
 
-  combineLatest(): void {
-  }
-
-  concat(): void {
-  }
-
-  merge(): void {
-  }
-
-  map(): void {
-  }
-
-  switchMap(): void {
-  }
-
-  bufferCount(): void {
-  }
-
-  bufferTime(): void {
-  }
-
-  scan(): void {
-  }
-
-  filter(): void {
-  }
-
-  distinctUntilChanged(): void {
-  }
-
-  takeUntil(): void {
-  }
-
-  first(): void {
-  }
-
-  skip(): void {
-  }
-
-  auditTime(): void {
-  }
-
-  debounceTime(): void {
-  }
-
-  throttleTime(): void {
-  }
-
-  startWith(): void {
-  }
-
-  share(): void {
-  }
-
-  catchError(): void {
-  }
-
-  tap(): void {
-  }
-
-  clear() {
-    console.clear();
+  private getNames(term: string): Observable<string[]> {
+    return of(this.names.filter(name => name.toLocaleLowerCase().includes(term.toLocaleLowerCase())))
+      .pipe(tap(() => console.log(`Requesting names for "${term}"`)))
+      .pipe(delay(Math.random() * 1000))
+      .pipe(tap(() => console.log(`Received names for "${term}"`)));
   }
 }

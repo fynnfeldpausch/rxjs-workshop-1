@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@ngneat/falso": "^2.26.1",
     "ngx-markdown": "^13.1.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",
